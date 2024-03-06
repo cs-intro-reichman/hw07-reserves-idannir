@@ -24,18 +24,18 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (tail(a).length() == 0 || tail(b).length()==0) {
-		if (tail(a).length() > tail(b).length()) {
-			return tail(a).length() - tail(b).length() ;
-		}	
-		else
-			return tail(b).length() - tail(a).length() ;
+		if (tail(a).length() == 0 ) {
+			return b.length();
 		}
-		if (a.charAt(0)== b.charAt(0)) {
+		else if (tail(b).length()==0)
+		{
+			return a.length();
+		}
+		else if (a.charAt(0)== b.charAt(0)) {
 			return levenshtein(tail(a), tail(b));
 		}
 		else
-		return 1 + levenshtein(tail(a), tail(b));
+		return (1 + Math.min(Math.min(levenshtein(tail(a), b), levenshtein(a, tail(b))), levenshtein(tail(a), tail(b))));
 	}
 
 	public static String[] readDictionary(String fileName) {
