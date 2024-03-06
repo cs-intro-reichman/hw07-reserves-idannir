@@ -24,7 +24,7 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (tail(a).length() == 0 ) {
+		if (tail(a).length() == 0 || tail(b).length()==0) {
 		if (tail(a).length() > tail(b).length()) {
 			return tail(a).length() - tail(b).length() ;
 		}	
@@ -58,7 +58,7 @@ public class SpellChecker {
 		int edistance = 1000;
 		for(int i =0; i < dictionary.length; i++)
 		{
-			if ( edistance >= levenshtein(word, dictionary[i])) 
+			if ( edistance > levenshtein(word, dictionary[i])) 
 			{
 				edistance = levenshtein(word, dictionary[i]);
 				similar = dictionary[i];
