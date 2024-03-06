@@ -15,7 +15,7 @@ public class SpellChecker {
 		String newstr ="";
 		for(int i=1; i<str.length(); i++)
 		{
-			newstr += str.charAt(i)
+			newstr += str.charAt(i);
 		}
 		return newstr;
 	}
