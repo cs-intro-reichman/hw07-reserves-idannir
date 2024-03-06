@@ -16,6 +16,21 @@ public class SpellChecker {
 
 	public static int levenshtein(String word1, String word2) {
 		// Your code goes here
+		String a = word1.toLowerCase();
+		String b = word2.toLowerCase();
+		int length = 0;
+		if (word1.length() > word2.length())
+		{
+			length = word1.length;
+		}
+		else length = word2.length();
+		if (length == 1) {
+			
+				if (a!=b) {
+					return 1 + levenshtein(tail(a), tail(b));
+				}
+			else return 0 + levenshtein(tail(a), tail(b));
+		}
 	}
 
 	public static String[] readDictionary(String fileName) {
