@@ -35,7 +35,7 @@ public class SpellChecker {
 			return levenshtein(tail(a), tail(b));
 		}
 		else
-		return (1 + Math.min(Math.min(levenshtein(tail(a), b), levenshtein(a, tail(b))), levenshtein(tail(a), tail(b))));
+		return 1 + levenshtein(tail(a), tail(b));
 	}
 
 	public static String[] readDictionary(String fileName) {
