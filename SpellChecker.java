@@ -12,30 +12,28 @@ public class SpellChecker {
 
 	public static String tail(String str) {
 		// Your code goes here
-		String newstr ="";
-		for(int i=1; i<str.length(); i++)
-		{
-			newstr += str.charAt(i);
-		}
-		return newstr;
+		
+		return str.substring(1);
 	}
 
 	public static int levenshtein(String word1, String word2) {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (tail(a).length() == 0 ) {
+		if (tail(a).length() == 0 ) 
+		{
 			return b.length();
 		}
 		else if (tail(b).length()==0)
 		{
 			return a.length();
 		}
-		else if (a.charAt(0)== b.charAt(0)) {
+		else if (a.charAt(0)== b.charAt(0)) 
+		{
 			return levenshtein(tail(a), tail(b));
 		}
 		else
-		return 1 + levenshtein(tail(a), tail(b));
+		return (1 + Math.min(Math.min(levenshtein(tail(a), b), levenshtein(a, tail(b))), levenshtein(tail(a), tail(b))));
 	}
 
 	public static String[] readDictionary(String fileName) {
