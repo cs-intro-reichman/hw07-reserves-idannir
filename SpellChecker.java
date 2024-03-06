@@ -19,18 +19,12 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		int length = 0;
-		if (word1.length() > word2.length())
-		{
-			length = word1.length();
+		if (tail(a).length() == 0 && tail(b).length()==0) 
+			return 0;
+		if (a!=b) {
+			return 1 + levenshtein(tail(a), tail(b));
 		}
-		else length = word2.length();
-		if (length == 1) {
-			
-				if (a!=b) {
-					return 1 + levenshtein(tail(a), tail(b));
-				}
-		}
+		
 		return 0 + levenshtein(tail(a), tail(b));
 	}
 
