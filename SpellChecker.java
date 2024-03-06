@@ -31,11 +31,11 @@ public class SpellChecker {
 		else
 			return tail(b).length() - tail(a).length() ;
 		}
-		if (a.charAt(0)!= b.charAt(0)) {
-			return 1 + levenshtein(tail(a), tail(b));
+		if (a.charAt(0)== b.charAt(0)) {
+			return levenshtein(tail(a), tail(b));
 		}
 		else
-		return levenshtein(tail(a), tail(b));
+		return 1 + levenshtein(tail(a), tail(b));
 	}
 
 	public static String[] readDictionary(String fileName) {
@@ -64,7 +64,7 @@ public class SpellChecker {
 				similar = dictionary[i];
 			}
 		}
-		if (threshold >= edistance)
+		if (threshold > edistance)
 		{
 			return similar;
 		}
