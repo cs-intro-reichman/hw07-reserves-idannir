@@ -58,13 +58,13 @@ public class SpellChecker {
 		int edistance = 1000;
 		for(int i =0; i < dictionary.length; i++)
 		{
-			if ( edistance > levenshtein(word, dictionary[i])) 
+			if ( edistance >= levenshtein(word, dictionary[i])) 
 			{
 				edistance = levenshtein(word, dictionary[i]);
 				similar = dictionary[i];
 			}
 		}
-		if (threshold > edistance)
+		if (threshold >= edistance)
 		{
 			return similar;
 		}
