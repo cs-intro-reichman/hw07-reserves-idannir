@@ -12,6 +12,7 @@ public class SpellChecker {
 
 	public static String tail(String str) {
 		// Your code goes here
+		return str;
 	}
 
 	public static int levenshtein(String word1, String word2) {
@@ -21,7 +22,7 @@ public class SpellChecker {
 		int length = 0;
 		if (word1.length() > word2.length())
 		{
-			length = word1.length;
+			length = word1.length();
 		}
 		else length = word2.length();
 		if (length == 1) {
@@ -29,8 +30,8 @@ public class SpellChecker {
 				if (a!=b) {
 					return 1 + levenshtein(tail(a), tail(b));
 				}
-			else return 0 + levenshtein(tail(a), tail(b));
 		}
+		return 0 + levenshtein(tail(a), tail(b));
 	}
 
 	public static String[] readDictionary(String fileName) {
@@ -39,12 +40,17 @@ public class SpellChecker {
 		In in = new In(fileName);
 
 		// Your code here
-
+		for (int i=0; i<dictionary.length; i++)
+		{
+			dictionary[i] = in.readString();
+		}
 		return dictionary;
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
+		String str = "";
 		// Your code goes here
+		return str;
 	}
 
 }
