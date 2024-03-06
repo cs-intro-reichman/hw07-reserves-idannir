@@ -12,7 +12,12 @@ public class SpellChecker {
 
 	public static String tail(String str) {
 		// Your code goes here
-		return str;
+		String newstr ="";
+		for(int i=1; i<str.length(); i++)
+		{
+			newstr += str.charAt(i)
+		}
+		return newstr;
 	}
 
 	public static int levenshtein(String word1, String word2) {
