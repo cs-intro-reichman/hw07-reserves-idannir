@@ -13,7 +13,10 @@ public class HashTagTokenizer {
 		String[] dictionary = new String[3000];
 
 		In in = new In(fileName);
-
+		for (int i=0; i<dictionary.length; i++)
+		{
+			dictionary[i] = in.readString();
+		}
 		// Your code here
 
 		return dictionary;
@@ -21,6 +24,14 @@ public class HashTagTokenizer {
 
 	public static boolean existInDictionary(String word, String []dictionary) {
 		// Your code here
+		for(int i=0; i<dictionary.length; i++)
+		{
+			if (dictionary[i] == word)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 
 	public static void breakHashTag(String hashtag, String[] dictionary) {
@@ -31,10 +42,20 @@ public class HashTagTokenizer {
         }
  
         int N = hashtag.length();
-
-        for (int i = 1; i <= N; i++) {
-		
+		String lowerhashtag = hashtag.toLowerCase();
+		String newhashtag = "";
+		String currentword = "";
+        for (int i = 1; i <= N; i++) 
+		{
+			currentword = lowerhashtag.substring(0 , i); 
+			if (existInDictionary(currentword,dictionary)== true) {
+				System.out.println(currentword);
+				i = N + i; 
+			}
+			
         }
+		newhashtag = lowerhashtag.substring(currentword.length());
+			breakHashTag(newhashtag, dictionary);
     }
 
 }
