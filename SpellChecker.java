@@ -32,7 +32,7 @@ public class SpellChecker {
 			return tail(b).length() - tail(a).length() ;
 		}
 		if (a.charAt(0)!= b.charAt(0)) {
-			return (1 + Math.min(Math.min(levenshtein(tail(a), b), levenshtein(a, tail(b))), levenshtein(tail(a), tail(b))));
+			return 1 + levenshtein(tail(a), tail(b));
 		}
 		else
 		return levenshtein(tail(a), tail(b));
@@ -54,7 +54,21 @@ public class SpellChecker {
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		String str = "";
 		// Your code goes here
-		return str;
+		String similar = "";
+		int edistance = 0;
+		for(int i =0; i<dictionary.length; i++)
+		{
+			if ( edistance > levenshtein(word, dictionary[i])) 
+			{
+				edistance = levenshtein(word, dictionary[i]);
+				similar = dictionary[i];
+			}
+		}
+		if (threshold > edistance)
+		{
+			return similar;
+		}
+		return word;
 	}
 
 }
