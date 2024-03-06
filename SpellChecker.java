@@ -24,8 +24,13 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (tail(a).length() == 0 && tail(b).length()==0) 
-			return 0;
+		if (tail(a).length() == 0 || tail(b).length()==0) {
+		if (tail(a).length() > tail(b).length()) {
+			return tail(a).length() - tail(b).length() ;
+		}	
+		else
+			return tail(b).length() - tail(a).length() ;
+		}
 		if (a.charAt(0)!= b.charAt(0)) {
 			return 1 + levenshtein(tail(a), tail(b));
 		}
