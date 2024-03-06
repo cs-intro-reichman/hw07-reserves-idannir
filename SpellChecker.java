@@ -24,7 +24,7 @@ public class SpellChecker {
 		if (a!=b) {
 			return 1 + levenshtein(tail(a), tail(b));
 		}
-		
+		else
 		return 0 + levenshtein(tail(a), tail(b));
 	}
 
