@@ -55,8 +55,8 @@ public class SpellChecker {
 		String str = "";
 		// Your code goes here
 		String similar = "";
-		int edistance = 0;
-		for(int i =0; i<dictionary.length; i++)
+		int edistance = 1000;
+		for(int i =0; i < dictionary.length; i++)
 		{
 			if ( edistance > levenshtein(word, dictionary[i])) 
 			{
@@ -64,7 +64,7 @@ public class SpellChecker {
 				similar = dictionary[i];
 			}
 		}
-		if (threshold > edistance)
+		if (threshold >= edistance)
 		{
 			return similar;
 		}
