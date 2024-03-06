@@ -21,7 +21,7 @@ public class SpellChecker {
 		String b = word2.toLowerCase();
 		if (tail(a).length() == 0 && tail(b).length()==0) 
 			return 0;
-		if (a!=b) {
+		if (a.charAt(0)!= b.charAt(0)) {
 			return 1 + levenshtein(tail(a), tail(b));
 		}
 		else
