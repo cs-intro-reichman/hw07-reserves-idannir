@@ -24,6 +24,7 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
+		boolean isequal = a.charAt(0) == b.charAt(0);
 		if (tail(a).length() == 0 ) {
 			return tail(b).length() ;
 		}	
@@ -31,11 +32,11 @@ public class SpellChecker {
 			return  tail(a).length() ;
 		}
 		//potential : else
-		if (a.charAt(0) != b.charAt(0)) {
-			return 1 + levenshtein(tail(a), tail(b));
+		if (isequal) {
+			return  levenshtein(tail(a), tail(b));
 		}
 		else
-		return  levenshtein(tail(a), tail(b));
+		return 1 + levenshtein(tail(a), tail(b));
 	}
 
 	public static String[] readDictionary(String fileName) {
