@@ -30,11 +30,12 @@ public class SpellChecker {
 		else if (tail(b).length()==0){
 			return  tail(a).length() ;
 		}
-		if (a.charAt(0)== b.charAt(0)) {
-			return levenshtein(tail(a), tail(b));
+		//potential : else
+		if (a.charAt(0) != b.charAt(0)) {
+			return 1 + levenshtein(tail(a), tail(b));
 		}
 		else
-		return 1 + levenshtein(tail(a), tail(b));
+		return  levenshtein(tail(a), tail(b));
 	}
 
 	public static String[] readDictionary(String fileName) {
@@ -51,7 +52,6 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		String str = "";
 		// Your code goes here
 		String similar = "";
 		int edistance = 1000;
