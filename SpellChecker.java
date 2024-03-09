@@ -12,31 +12,31 @@ public class SpellChecker {
 
 	public static String tail(String str) {
 		// Your code goes here
-		String newstr ="";
-		for(int i=1; i<str.length(); i++)
-		{
-			newstr += str.charAt(i);
-		}
-		return newstr;
+		return str.substring(1);
+	}
+	
+	public static String head(String str) {
+		// Your code goes here
+	
+		return str.substring(0,1);
 	}
 
 	public static int levenshtein(String word1, String word2) {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		boolean isequal = a.charAt(0) == b.charAt(0);
-		if (tail(a).length() == 0 ) {
-			return tail(b).length() ;
+		if (a.length() == 0 ) {
+			return b.length() ;
 		}	
-		else if (tail(b).length()==0){
-			return  tail(a).length() ;
+		else if (b.length() == 0) {
+			return  a.length() ;
 		}
-		//potential : else
-		if (isequal) {
+		
+		if (head(a) == head(b)) {
 			return  levenshtein(tail(a), tail(b));
 		}
 		else
-		return 1 + levenshtein(tail(a), tail(b));
+		return (1 + Math.min(Math.min(levenshtein(tail(a), b), levenshtein(a, tail(b))), levenshtein(tail(a), tail(b))));
 	}
 
 	public static String[] readDictionary(String fileName) {
@@ -55,8 +55,8 @@ public class SpellChecker {
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		// Your code goes here
 		String similar = "";
-		int edistance = 1000;
-		for(int i =0; i < dictionary.length; i++)
+		int edistance = 1000; /*random big number of edit distances */
+		for(int i = 0; i < dictionary.length; i++)
 		{
 			if ( edistance > levenshtein(word, dictionary[i])) 
 			{
