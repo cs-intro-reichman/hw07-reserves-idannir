@@ -25,11 +25,11 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (a.length() == 0 ) {
-			return b.length() ;
+		if (tail(a).length() == 0 ) {
+			return tail(b).length() ;
 		}	
-		else if (b.length() == 0) {
-			return  a.length() ;
+		else if (tail(b).length() == 0) {
+			return  tail(a).length() ;
 		}
 		
 		if (head(a) == head(b)) {
