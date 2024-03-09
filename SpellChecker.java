@@ -25,14 +25,9 @@ public class SpellChecker {
 		// Your code goes here
 		String a = word1.toLowerCase();
 		String b = word2.toLowerCase();
-		if (tail(a).length() == 0 ) {
-			return tail(b).length() ;
-		}	
-		else if (tail(b).length() == 0) {
-			return  tail(a).length() ;
-		}
-		
-		if (head(a) == head(b)) {
+		if(a.isEmpty()) return b.length();
+		else if(b.isEmpty()) return a.length();
+		else if (head(a).equals(head(b))) {
 			return  levenshtein(tail(a), tail(b));
 		}
 		else
